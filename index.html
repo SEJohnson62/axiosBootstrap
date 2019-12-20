@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <!-- import axios using CDN -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js'></script>
+    <!-- import bootstrap using CDN -->
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'></link>
+    <!--script src='app.js' defer</script>-->
+    <h1 id='title'>Acme Users</h1>
+      <div id='container'>
+        <ul class="list-group">
+          <li class="list-group-item">item one</li>
+          <li class="list-group-item">item two</li>
+          <li class="list-group-item list-group-item-danger">item three</li>
+          <li class="list-group-item list-group-item-success">item four</li>
+        </ul>
+      </div>
+  </head>
+  <body>
+    <script>
+      const URL = `https://acme-users-api-rev.herokuapp.com/api/users`
+      const nameDisplay = document.querySelector('list-group');
+      let html = [];
+      let users = [];
+
+      const loadData = (page) => {
+        /*-- we typically call axios using .get() or similar method --*/
+        axios.get(URL)
+        .then(response => response.data)
+        .then( data => console.log(data))
+/*
+        users = data.users;
+        for( i = 0; i < users.length; i++ ) {
+            const name = users[i].fullName;
+            html = `${html}<li ${name}></li>`
+        }//end for
+        */
+      }
+      loadData();
+      /*nameDisplay.innerText = */
+      html =`<h2>You found ${data.users.length} Users</h2>${html}`
+      console.log( html );
+    </script>
+  </body>
+</html>

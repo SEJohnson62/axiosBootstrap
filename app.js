@@ -16,3 +16,23 @@ if(!window.location.hash){
 } else {
     setTab(window.location.hash);
 }
+
+
+const loadData = ()=> {
+    axios.get('https://acme-users-api-rev.herokuapp.com/api/products')
+        .then(response => response.data)
+        .then(data => {
+            const products = document.querySelector('#products')
+            const html = data.map(item => {
+                return `
+                    <div class='product>
+                        <h3>${item.name}</h3>
+                    </div>
+                `
+            }).join('');
+
+            products.innerHTML = html;
+        })
+}
+
+loadData();
